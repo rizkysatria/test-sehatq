@@ -16,8 +16,8 @@ class ApiAssembly: Assembly {
             ApiClientServices()
         }
         
-        container.register(GetProductListApiProtocol.self) { r in
-            GetProductListApi(apiClientServices: r.resolve(ApiClientServicesProtocol.self)!)
+        container.register(ProductApiServiceProtocol.self) { r in
+            ProductApiService(apiClientServices: r.resolve(ApiClientServicesProtocol.self)!)
         }
         
     }

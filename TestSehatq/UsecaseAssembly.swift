@@ -12,9 +12,9 @@ class UsecaseAssembly: Assembly {
     
     func assemble(container: Container) {
         
-//        container.register(ApiClientServicesProtocol.self) { r in
-//            ApiClientServices()
-//        }
+        container.register(DisplayProductProtocol.self) { r in
+            DisplayProduct(productApi: r.resolve(ProductApiServiceProtocol.self)!)
+        }
         
     }
 }

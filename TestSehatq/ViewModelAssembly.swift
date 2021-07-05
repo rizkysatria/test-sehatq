@@ -12,9 +12,9 @@ class ViewModelAssembly: Assembly {
     
     func assemble(container: Container) {
         
-//        container.register(ApiClientServicesProtocol.self) { r in
-//            ApiClientServices()
-//        }
+        container.register(HomeViewModel.self) { r in
+            HomeViewModel(displayProduct: r.resolve(DisplayProductProtocol.self)!)
+        }
         
     }
 }

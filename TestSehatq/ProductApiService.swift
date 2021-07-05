@@ -1,5 +1,5 @@
 //
-//  GetProductListApi.swift
+//  ProductApiService.swift
 //  TestSehatq
 //
 //  Created by rizky satria on 05/07/21.
@@ -9,11 +9,11 @@ import Foundation
 import RxSwift
 import ObjectMapper
 
-protocol GetProductListApiProtocol {
+protocol ProductApiServiceProtocol {
     func getProductList() -> Single<ProductListModel>
 }
 
-class GetProductListApi: GetProductListApiProtocol {
+class ProductApiService:ProductApiServiceProtocol {
     
     let apiClientServices: ApiClientServicesProtocol!
     let disposeBag = DisposeBag()

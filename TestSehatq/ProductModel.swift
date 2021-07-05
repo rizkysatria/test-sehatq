@@ -8,16 +8,15 @@
 import Foundation
 import ObjectMapper
 
-struct ProductModel : Mappable {
-    var category : [Category]?
-    var productPromo : [ProductPromo]?
+class ProductModel : Mappable {
+    var category : [CategoryModel] = [CategoryModel]()
+    var productPromo : [ProductPromoModel] = [ProductPromoModel]()
+    
+    init() {}
 
-    init?(map: Map) {
+    required init?(map: Map) {}
 
-    }
-
-    mutating func mapping(map: Map) {
-
+    func mapping(map: Map) {
         category <- map["category"]
         productPromo <- map["productPromo"]
     }

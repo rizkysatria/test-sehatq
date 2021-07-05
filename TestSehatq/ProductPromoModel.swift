@@ -8,7 +8,7 @@
 import Foundation
 import ObjectMapper
 
-struct ProductPromo : Mappable {
+struct ProductPromoModel : Mappable {
     var id : String?
     var imageUrl : String?
     var title : String?

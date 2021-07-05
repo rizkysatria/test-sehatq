@@ -13,7 +13,8 @@ class StoryboardAssembly: Assembly {
     
     func assemble(container: Container) {
 
-        container.storyboardInitCompleted(MainViewController.self) { r, c in
+        container.storyboardInitCompleted(HomeViewController.self) { r, c in
+            c.homeViewModel = r.resolve(HomeViewModel.self)!
         }
         
     }

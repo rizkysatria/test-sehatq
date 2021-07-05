@@ -8,8 +8,17 @@
 import UIKit
 
 class Utility {
+    
     class func getViewControllerFromStoryboard(_ viewControllerID: String, storyboardName: String) -> UIViewController {
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: viewControllerID)
+    }
+    
+    class func getScreenWidth() -> CGFloat {
+        if UIScreen.main.bounds.width > UIScreen.main.bounds.height {
+            return UIScreen.main.bounds.height
+        }
+        return UIScreen.main.bounds.width
+        
     }
 }
