@@ -13,7 +13,9 @@ class UsecaseAssembly: Assembly {
     func assemble(container: Container) {
         
         container.register(DisplayProductProtocol.self) { r in
-            DisplayProduct(productApi: r.resolve(ProductApiServiceProtocol.self)!)
+            DisplayProduct(productApi: r.resolve(ProductApiServiceProtocol.self)!,
+                           productStorage: r.resolve(ProductPromoStorageProtocol.self)!,
+                           categoryStorage: r.resolve(CategoryStorageProtocol.self)!)
         }
         
     }

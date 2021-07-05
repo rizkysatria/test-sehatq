@@ -17,7 +17,8 @@ extension SwinjectStoryboard {
             StoryboardAssembly(),
             ViewModelAssembly(),
             UsecaseAssembly(),
-            ApiAssembly()
+            ApiAssembly(),
+            StorageAssembly()
             ],
             container: defaultContainer
         )

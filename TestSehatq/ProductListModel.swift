@@ -13,9 +13,7 @@ class ProductListModel : Mappable {
     
     init() {}
 
-    required init?(map: Map) {
-        
-    }
+    required init?(map: Map) {}
 
     func mapping(map: Map) {
         data <- map["data"]

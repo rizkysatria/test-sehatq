@@ -4,6 +4,11 @@ PODS:
   - KRProgressHUD (3.4.7):
     - KRActivityIndicatorView (= 3.0.7)
   - ObjectMapper (4.2.0)
+  - Realm (10.9.0):
+    - Realm/Headers (= 10.9.0)
+  - Realm/Headers (10.9.0)
+  - RealmSwift (10.9.0):
+    - Realm (= 10.9.0)
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
     - RxSwift (= 6.2.0)
@@ -13,7 +18,6 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
-  - SwiftyJSON (4.3.0)
   - Swinject (2.6.2)
   - SwinjectStoryboard (2.2.0):
     - Swinject (~> 2.6)
@@ -22,10 +26,10 @@ DEPENDENCIES:
   - Alamofire
   - KRProgressHUD (= 3.4.7)
   - ObjectMapper
+  - RealmSwift
   - RxCocoa
   - RxSwift
   - SDWebImage (= 5.11.1)
-  - SwiftyJSON (~> 4.0)
   - Swinject (= 2.6.2)
   - SwinjectStoryboard (= 2.2.0)
 
@@ -35,11 +39,12 @@ SPEC REPOS:
     - KRActivityIndicatorView
     - KRProgressHUD
     - ObjectMapper
+    - Realm
+    - RealmSwift
     - RxCocoa
     - RxRelay
     - RxSwift
     - SDWebImage
-    - SwiftyJSON
     - Swinject
     - SwinjectStoryboard
 
@@ -48,14 +53,15 @@ SPEC CHECKSUMS:
   KRActivityIndicatorView: ad69e89c4ce40c986cf580595be4829dcad0e35a
   KRProgressHUD: a248f0bc6c9c2aed40a37b76e03ffecc7f85c887
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  Realm: 9feef41ab8230ed706c4dc503fc292594915bf9a
+  RealmSwift: 91246183b772e0ea1bf777116c4b8d9939f983b3
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
-  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
   SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
 
-PODFILE CHECKSUM: df05c3f914e2a6aa29e6146b7317793252509eaa
+PODFILE CHECKSUM: 9ce4ab7fb5519a0b71417e57ae2d5593dc137adb
 
 COCOAPODS: 1.10.1

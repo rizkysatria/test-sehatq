@@ -8,13 +8,13 @@ target 'TestSehatq' do
   # Pods for TestSehatq
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'SwiftyJSON', '~> 4.0'
   pod 'ObjectMapper'
   pod 'Alamofire'
   pod 'Swinject', '2.6.2'
   pod 'SwinjectStoryboard', '2.2.0'
   pod 'SDWebImage', '5.11.1'
   pod 'KRProgressHUD', '3.4.7'
+  pod 'RealmSwift'
 
   target 'TestSehatqTests' do
     inherit! :search_paths

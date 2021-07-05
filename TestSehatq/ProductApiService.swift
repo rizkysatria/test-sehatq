@@ -24,7 +24,6 @@ class ProductApiService:ProductApiServiceProtocol {
     
     func getProductList() -> Single<ProductListModel> {
         return apiClientServices.getString().map { (isSuccess, response) in
-            print(response)
             return Mapper<ProductListModel>().mapArray(JSONString: response)?.first ?? ProductListModel()
         }
     }

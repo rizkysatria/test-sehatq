@@ -12,6 +12,8 @@ class CategoryModel : Mappable {
     var imageUrl : String?
     var id : Int?
     var name : String?
+    
+    init() {}
 
     required init?(map: Map) {
 
@@ -22,5 +24,17 @@ class CategoryModel : Mappable {
         id <- map["id"]
         name <- map["name"]
     }
-
+    
+    static func toList(categoryListEntity: [CategoryEntities]) -> [CategoryModel] {
+        var categoryListModel = [CategoryModel]()
+        categoryListEntity.forEach { categoryEntities in
+            let categoryModel = CategoryModel()
+            categoryModel.id = categoryEntities.id
+            categoryModel.name = categoryEntities.name
+            categoryModel.imageUrl = categoryEntities.imageUrl
+            categoryListModel.append(categoryModel)
+        }
+        return categoryListModel
+    }
+    
 }
