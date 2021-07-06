@@ -37,7 +37,7 @@ class SearchViewController: UIViewController {
     }
     
     private func registerCell() {
-        tableView.register(UINib(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "ListTableViewCell")
+        tableView.register(ListTableViewCell.nib(), forCellReuseIdentifier: ListTableViewCell.cellReuseIdentifier())
     }
     
     private func setupSearchBar() {
@@ -69,7 +69,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.cellReuseIdentifier(), for: indexPath) as! ListTableViewCell
         let data = searchViewModel.resultProductPromoList[indexPath.row]
         cell.setupUI(imgUrl: data.imageUrl, name: data.title, price: data.price)
         return cell

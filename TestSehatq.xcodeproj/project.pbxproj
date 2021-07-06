@@ -59,6 +59,7 @@
 		5CF6E92D2693E29900994C1D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E92C2693E29900994C1D /* SearchViewModel.swift */; };
 		5CF6E9322693E89000994C1D /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E9312693E89000994C1D /* ListTableViewCell.swift */; };
 		5CF6E9342693E8A000994C1D /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF6E9332693E8A000994C1D /* ListTableViewCell.xib */; };
+		5CF6E9362693FA2600994C1D /* CellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E9352693FA2600994C1D /* CellExtension.swift */; };
 		7AC77CB1128796948FF68446 /* Pods_TestSehatqTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F6B1EE1ACA662A1B778FB1 /* Pods_TestSehatqTests.framework */; };
 		A9548011EB6E9F55A8C92C01 /* Pods_TestSehatq_TestSehatqUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335F2C8F7A91851B65946506 /* Pods_TestSehatq_TestSehatqUITests.framework */; };
 		C37AC31D7D85C13CF8EF9C45 /* Pods_TestSehatq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F45DD635046D6F4ACC95E6D /* Pods_TestSehatq.framework */; };
@@ -143,6 +144,7 @@
 		5CF6E92C2693E29900994C1D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		5CF6E9312693E89000994C1D /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		5CF6E9332693E8A000994C1D /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		5CF6E9352693FA2600994C1D /* CellExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellExtension.swift; sourceTree = "<group>"; };
 		90F6B1EE1ACA662A1B778FB1 /* Pods_TestSehatqTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestSehatqTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		938FB97D79516E4B361B3C41 /* Pods-TestSehatq.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSehatq.release.xcconfig"; path = "Target Support Files/Pods-TestSehatq/Pods-TestSehatq.release.xcconfig"; sourceTree = "<group>"; };
 		9B6199DE97F4E51748A82BBA /* Pods-TestSehatq-TestSehatqUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSehatq-TestSehatqUITests.release.xcconfig"; path = "Target Support Files/Pods-TestSehatq-TestSehatqUITests/Pods-TestSehatq-TestSehatqUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				5CF6E90D2693353300994C1D /* UIImageExtension.swift */,
+				5CF6E9352693FA2600994C1D /* CellExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				5CF6E8DE2692F86700994C1D /* StoryboardAssembly.swift in Sources */,
 				5CF6E923269362D100994C1D /* SearchViewController.swift in Sources */,
 				5CF6E919269351F600994C1D /* CategoryStorage.swift in Sources */,
+				5CF6E9362693FA2600994C1D /* CellExtension.swift in Sources */,
 				5CF6E8D62692F80200994C1D /* SwinjectStoryBoardSetup.swift in Sources */,
 				5CF6E8E5269314C700994C1D /* HomeViewController.swift in Sources */,
 				5CF6E8D32692F33200994C1D /* ProductApiService.swift in Sources */,

@@ -42,8 +42,8 @@ class HomeViewController: UIViewController {
     }
     
     private func registerCell() {
-        tableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryTableViewCell")
-        tableView.register(UINib(nibName: "ProductLisTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductLisTableViewCell")
+        tableView.register(CategoryTableViewCell.nib(), forCellReuseIdentifier: CategoryTableViewCell.cellReuseIdentifier())
+        tableView.register(ProductLisTableViewCell.nib(), forCellReuseIdentifier: ProductLisTableViewCell.cellReuseIdentifier())
     }
     
     private func setupButton() {
@@ -77,11 +77,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableViewCell", for: indexPath) as! CategoryTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.cellReuseIdentifier(), for: indexPath) as! CategoryTableViewCell
             cell.setupUI(categoryList: homeViewModel.categoryList)
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ProductLisTableViewCell", for: indexPath) as! ProductLisTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ProductLisTableViewCell.cellReuseIdentifier(), for: indexPath) as! ProductLisTableViewCell
             let data = homeViewModel.productList[indexPath.row]
             cell.setupUI(productPromoModel: data)
             return cell
