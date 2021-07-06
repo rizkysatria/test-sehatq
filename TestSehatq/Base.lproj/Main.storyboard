@@ -11,7 +11,7 @@
             <objects>
                 <tabBarController id="x7V-wJ-Rc8" customClass="MainViewController" customModule="TestSehatq" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="cfu-oX-Mwl"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cEa-4b-itP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

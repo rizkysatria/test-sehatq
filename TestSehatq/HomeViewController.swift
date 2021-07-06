@@ -58,6 +58,12 @@ class HomeViewController: UIViewController {
         navigationController?.pushViewController(searchVC, animated: true)
     }
     
+    private func showProductDetailsPage(productId: String) {
+        let productDetailsVC = ProductDetailViewController.create()
+        productDetailsVC.setProductId(productId: productId)
+        navigationController?.pushViewController(productDetailsVC, animated: true)
+    }
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -99,7 +105,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        showProductDetailsPage(productId: homeViewModel.productList[indexPath.row].id)
     }
     
 }

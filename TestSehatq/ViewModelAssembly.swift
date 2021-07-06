@@ -20,5 +20,10 @@ class ViewModelAssembly: Assembly {
             SearchViewModel(displayProduct: r.resolve(DisplayProductProtocol.self)!)
         }
         
+        container.register(ProductDetailViewModel.self) { r in
+            ProductDetailViewModel(displayProduct: r.resolve(DisplayProductProtocol.self)!,
+                                   manageCart: r.resolve(ManageCartProtocol.self)!)
+        }
+        
     }
 }

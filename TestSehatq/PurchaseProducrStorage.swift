@@ -11,6 +11,7 @@ import RealmSwift
 protocol PurchaseProducrStorageProtocol {
     func save(purchaseProduct: PurchaseProductEntities)
     func getPurchaseProduct(id: String) -> PurchaseProductEntities?
+    func getPurchaseProducts() -> [PurchaseProductEntities]
     func clear()
 }
 
@@ -18,12 +19,16 @@ class PurchaseProducrStorage: RealmConfig, PurchaseProducrStorageProtocol {
     
     func save(purchaseProduct: PurchaseProductEntities) {
         try! realm.write {
-            realm.add(purchaseProduct, update: .all)
+            realm.add(purchaseProduct)
         }
     }
     
     func getPurchaseProduct(id: String) -> PurchaseProductEntities? {
         return realm.objects(PurchaseProductEntities.self).filter("id = '\(id)'").first
+    }
+    
+    func getPurchaseProducts() -> [PurchaseProductEntities] {
+        return Array(realm.objects(PurchaseProductEntities.self))
     }
     
     func clear() {

@@ -24,12 +24,12 @@ class ProductPromoEntities: Object {
         var productPromoEntitiesList = [ProductPromoEntities]()
         productPromoModels.forEach { productPromoModel in
             let productPromoEntities = ProductPromoEntities()
-            productPromoEntities.id = productPromoModel.id ?? ""
-            productPromoEntities.imageUrl = productPromoModel.imageUrl ?? ""
-            productPromoEntities.title = productPromoModel.title ?? ""
-            productPromoEntities.descriptionProduct = productPromoModel.description ?? ""
-            productPromoEntities.price = productPromoModel.price ?? ""
-            productPromoEntities.loved = productPromoModel.loved ?? 0
+            productPromoEntities.id = productPromoModel.id
+            productPromoEntities.imageUrl = productPromoModel.imageUrl
+            productPromoEntities.title = productPromoModel.title
+            productPromoEntities.descriptionProduct = productPromoModel.description
+            productPromoEntities.price = productPromoModel.price
+            productPromoEntities.loved = productPromoModel.loved
             productPromoEntitiesList.append(productPromoEntities)
         }
         return productPromoEntitiesList

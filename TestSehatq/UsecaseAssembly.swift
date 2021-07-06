@@ -18,5 +18,10 @@ class UsecaseAssembly: Assembly {
                            categoryStorage: r.resolve(CategoryStorageProtocol.self)!)
         }
         
+        container.register(ManageCartProtocol.self) { r in
+            ManageCart(purchaseProduct: r.resolve(PurchaseProducrStorageProtocol.self)!,
+                       productPromo: r.resolve(ProductPromoStorageProtocol.self)!)
+        }
+        
     }
 }

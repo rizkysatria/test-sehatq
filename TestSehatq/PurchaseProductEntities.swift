@@ -18,4 +18,13 @@ class PurchaseProductEntities: Object {
         return "id"
     }
     
+    static func toEntities(productPromo: ProductPromoEntities) -> PurchaseProductEntities {
+        let purchaseProductEntities = PurchaseProductEntities()
+        purchaseProductEntities.id = productPromo.id
+        purchaseProductEntities.title = productPromo.title
+        purchaseProductEntities.imageUrl = productPromo.imageUrl
+        purchaseProductEntities.price = productPromo.price
+        return purchaseProductEntities
+    }
+    
 }

@@ -21,6 +21,10 @@ class StoryboardAssembly: Assembly {
             c.searchViewModel = r.resolve(SearchViewModel.self)!
         }
         
+        container.storyboardInitCompleted(ProductDetailViewController.self) { r, c in
+            c.productDetailViewModel = r.resolve(ProductDetailViewModel.self)!
+        }
+        
     }
     
 }
