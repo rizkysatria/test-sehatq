@@ -34,12 +34,12 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jic-rl-BkV">
                                                         <rect key="frame" x="8" y="83" width="330" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="username"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oEO-MN-dyw">
                                                         <rect key="frame" x="8" y="132" width="330" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="29i-Us-wGX">
                                                         <rect key="frame" x="238" y="181" width="100" height="30"/>
@@ -145,7 +145,9 @@
                         <outlet property="loginContainerView" destination="ZSL-5z-wjz" id="bDl-Nm-Y2z"/>
                         <outlet property="loginWithFBButton" destination="701-4F-NfB" id="V9h-Eb-eS8"/>
                         <outlet property="loginWithGoogleButton" destination="eZM-5B-HOO" id="1su-4V-hxv"/>
+                        <outlet property="passwordTextField" destination="oEO-MN-dyw" id="h2j-b9-m1h"/>
                         <outlet property="rememberMeButton" destination="hxw-l9-gCZ" id="aup-Yc-9CA"/>
+                        <outlet property="userNameTextField" destination="jic-rl-BkV" id="q5h-TG-jns"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

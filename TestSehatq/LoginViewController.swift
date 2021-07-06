@@ -17,10 +17,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginContainerView: UIView!
     @IBOutlet weak var rememberMeButton: UIButton!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     var loginViewModel: LoginViewModel!
     
-    private var isRememberMeActive: Bool = false
     private let loginManager = LoginManager()
     private let disposeBag = DisposeBag()
     
@@ -35,6 +36,7 @@ class LoginViewController: UIViewController {
         setupGoogleSignIn()
         setupLayerComponent()
         updateUIRememberMeButton()
+        setupTextFields()
     }
     
     private func setupButtons() {
@@ -52,9 +54,13 @@ class LoginViewController: UIViewController {
         rememberMeButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let weakSelf = self else { return }
-                weakSelf.isRememberMeActive = !weakSelf.isRememberMeActive
+                weakSelf.loginViewModel.setActiveRememberMe(isActive: !weakSelf.loginViewModel.isRememberMeActive)
                 weakSelf.updateUIRememberMeButton()
-            
+        }).disposed(by: disposeBag)
+        
+        loginButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.loginViewModel.onTapLoginButton()
         }).disposed(by: disposeBag)
         
     }
@@ -96,9 +102,32 @@ class LoginViewController: UIViewController {
         loginButton.layer.cornerRadius = 8
     }
     
-    
     private func updateUIRememberMeButton() {
-        rememberMeButton.setBackgroundImage(UIImage(systemName: isRememberMeActive ? "checkmark.square" : "square"), for: .normal)
+        rememberMeButton.setBackgroundImage(UIImage(systemName: loginViewModel.isRememberMeActive ? "checkmark.square" : "square"), for: .normal)
+    }
+    
+    private func setupTextFields() {
+        let userNameBindToUI = loginViewModel.userName.asObservable()
+            .bind(to: userNameTextField.rx.text)
+        let _ = userNameTextField.rx.text
+            .subscribe(onNext: { [weak self] value in
+                if let value = value {
+                    self?.loginViewModel.userName.accept(value)
+                }
+            }, onCompleted:  {
+                userNameBindToUI.dispose()
+            })
+        
+        let passwordBindToUI = loginViewModel.password.asObservable()
+            .bind(to: passwordTextField.rx.text)
+        let _ = passwordTextField.rx.text
+            .subscribe(onNext: { [weak self] value in
+                if let value = value {
+                    self?.loginViewModel.password.accept(value)
+                }
+            }, onCompleted:  {
+                passwordBindToUI.dispose()
+            })
     }
 }
 

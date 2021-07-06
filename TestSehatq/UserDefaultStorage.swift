@@ -10,13 +10,15 @@ import Foundation
 protocol UserDefaultStorageProtocol {
     func getIsLogin() -> Bool
     func setIsLogin(isLogin: Bool)
-    func clearToken()
+    func getIsRememberMeActive() -> Bool
+    func setIsRememberMeActive(isActive: Bool)
 }
 
 class UserDefaultStorage: UserDefaultStorageProtocol {
     
     private let defaults = UserDefaults.standard
     private let isLoginKey = "isLogin"
+    private let isRememberMeActive = "isRememberMeActive"
     
     func getIsLogin() -> Bool {
         return defaults.value(forKey: isLoginKey) as? Bool ?? false
@@ -26,8 +28,12 @@ class UserDefaultStorage: UserDefaultStorageProtocol {
         defaults.setValue(isLogin, forKey: isLoginKey)
     }
     
-    func clearToken() {
-        defaults.removeObject(forKey: isLoginKey)
+    func getIsRememberMeActive() -> Bool {
+        return defaults.value(forKey: isRememberMeActive) as? Bool ?? false
+    }
+    
+    func setIsRememberMeActive(isActive: Bool) {
+        defaults.setValue(isActive, forKey: isRememberMeActive)
     }
     
 }

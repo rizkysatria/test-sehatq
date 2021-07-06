@@ -9,17 +9,20 @@ import Foundation
 import GoogleSignIn
 import FBSDKLoginKit
 import RxSwift
+import RxCocoa
 
 class LoginViewModel {
+    
+    var userName = BehaviorRelay<String>(value: "")
+    var password = BehaviorRelay<String>(value: "")
     
     var rxEventSuccessLogin: PublishSubject<Void> {
         return eventSuccessLogin
     }
     
-    private let eventSuccessLogin = PublishSubject<Void>()
-    
+    private (set) var isRememberMeActive: Bool = false
     private let loginManager = LoginManager()
-    
+    private let eventSuccessLogin = PublishSubject<Void>()
     private let userDefaultStorage: UserDefaultStorageProtocol!
     
     init(userDefaultStorage: UserDefaultStorageProtocol) {
@@ -54,6 +57,19 @@ class LoginViewModel {
         } else {
             onSuccessLogin()
         }
+    }
+    
+    func onTapLoginButton() {
+        let userModel = UserModel()
+        if userName.value == userModel.userName && password.value == userModel.password {
+            userDefaultStorage.setIsLogin(isLogin: true)
+            userDefaultStorage.setIsRememberMeActive(isActive: isRememberMeActive)
+            eventSuccessLogin.onNext(())
+        }
+    }
+    
+    func setActiveRememberMe(isActive: Bool) {
+        isRememberMeActive = isActive
     }
     
     private func onSuccessLogin() {
