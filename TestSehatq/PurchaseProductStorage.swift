@@ -1,5 +1,5 @@
 //
-//  PurchaseProducrStorage.swift
+//  PurchaseProductStorage.swift
 //  TestSehatq
 //
 //  Created by rizky satria on 05/07/21.
@@ -8,18 +8,18 @@
 import Foundation
 import RealmSwift
 
-protocol PurchaseProducrStorageProtocol {
+protocol PurchaseProductStorageProtocol {
     func save(purchaseProduct: PurchaseProductEntities)
     func getPurchaseProduct(id: String) -> PurchaseProductEntities?
     func getPurchaseProducts() -> [PurchaseProductEntities]
     func clear()
 }
 
-class PurchaseProducrStorage: RealmConfig, PurchaseProducrStorageProtocol {
+class PurchaseProductStorage: RealmConfig, PurchaseProductStorageProtocol {
     
     func save(purchaseProduct: PurchaseProductEntities) {
         try! realm.write {
-            realm.add(purchaseProduct)
+            realm.add(purchaseProduct, update: .modified)
         }
     }
     

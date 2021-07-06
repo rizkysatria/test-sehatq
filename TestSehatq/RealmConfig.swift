@@ -10,7 +10,7 @@ import RealmSwift
 
 class RealmConfig {
     
-    static let databaseVersion: UInt64 = 1
+    static let databaseVersion: UInt64 = 2
 
     var realm: Realm
    

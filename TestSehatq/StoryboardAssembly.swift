@@ -25,6 +25,10 @@ class StoryboardAssembly: Assembly {
             c.productDetailViewModel = r.resolve(ProductDetailViewModel.self)!
         }
         
+        container.storyboardInitCompleted(PurchaseViewController.self) { r, c in
+            c.purchaseViewModel = r.resolve(PurchaseViewModel.self)!
+        }
+        
     }
     
 }

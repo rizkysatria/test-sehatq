@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class MainViewController: UITabBarController {
+class MainViewController: UITabBarController, UITabBarControllerDelegate {
     
     private let disposeBag: DisposeBag = DisposeBag()
 
@@ -16,6 +16,7 @@ class MainViewController: UITabBarController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         addTabbarItems()
+        delegate = self
     }
     
     private func addTabbarItems() {
@@ -31,8 +32,9 @@ class MainViewController: UITabBarController {
         let cartTabbarItem = UITabBarItem(title: "Cart", image: nil, tag: 0)
         cartTabbarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -16)
         
-        let profileVC = ProfileViewController.create()
-        let profileTabbarItem = UITabBarItem(title: "Profile", image: nil, tag: 0)
+        let profileVC = UINavigationController()
+        profileVC.restorationIdentifier = "profile"
+        let profileTabbarItem = UITabBarItem(title: "Profile", image: nil, tag: 3)
         profileTabbarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -16)
         
         homeVC.tabBarItem = homeTabbarItem
@@ -44,7 +46,13 @@ class MainViewController: UITabBarController {
         
         viewControllers = listOfViewControllers
     }
-
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if viewController.restorationIdentifier == "profile" {
+            viewController.navigationController?.pushViewController(PurchaseViewController.create(), animated: true)
+        }
+        return false
+    }
 
 }
 
