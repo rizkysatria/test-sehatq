@@ -9,10 +9,12 @@ import Foundation
 import RxSwift
 
 protocol DisplayProductProtocol {
-    func getProductList() -> Single<ProductModel>
-    func getAllProductPromo() -> Single<[ProductPromoModel]>
+    func getAllData() -> Single<(categories: [CategoryModel], productPromo: [ProductPromoModel])>
     func getProductPromo(id: String) -> Single<ProductPromoModel>
+    func getAllProductPromo() -> Single<[ProductPromoModel]>
+
 }
+
 
 class DisplayProduct: DisplayProductProtocol {
     
@@ -26,23 +28,14 @@ class DisplayProduct: DisplayProductProtocol {
         self.categoryStorage = categoryStorage
     }
     
-    func getProductList() -> Single<ProductModel> {
-        return productApi.getProductList().map { [weak self] productListModel in
-            guard let weakSelf = self, let data = productListModel.data else { return ProductModel() }
-            weakSelf.categoryStorage.clear()
-            weakSelf.categoryStorage.save(categories: CategoryEntities.toList(categoryModels: data.category))
-            weakSelf.productStorage.clear()
-            weakSelf.productStorage.save(productPromos: ProductPromoEntities.toList(productPromoModels: data.productPromo))
-            return productListModel.data ?? ProductModel()
+    func getAllData() -> Single<(categories: [CategoryModel], productPromo: [ProductPromoModel])> {
+        let categoryFromCache = CategoryModel.toList(categoryListEntity: categoryStorage.getCategories())
+        let productPromoFromCache = ProductPromoModel.toList(productPromoEntitiesList: productStorage.getProductPromos())
+        if !categoryFromCache.isEmpty && !productPromoFromCache.isEmpty {
+            return Single.just((categoryFromCache, productPromoFromCache))
+        } else {
+            return getAllDataFromServer()
         }
-    }
-    
-    func getAllCategories() -> Single<[CategoryModel]> {
-        return Single.just(CategoryModel.toList(categoryListEntity: categoryStorage.getCategories()))
-    }
-    
-    func getAllProductPromo() -> Single<[ProductPromoModel]> {
-        return Single.just(ProductPromoModel.toList(productPromoEntitiesList: productStorage.getProductPromos()))
     }
     
     func getProductPromo(id: String) -> Single<ProductPromoModel> {
@@ -50,6 +43,21 @@ class DisplayProduct: DisplayProductProtocol {
             return Single.just(ProductPromoModel.toModel(productPromoEntities: dataFromCache))
         }
         return Single.just(ProductPromoModel())
+    }
+    
+    func getAllProductPromo() -> Single<[ProductPromoModel]> {
+        return Single.just(ProductPromoModel.toList(productPromoEntitiesList: productStorage.getProductPromos()))
+    }
+    
+    private func getAllDataFromServer() -> Single<(categories: [CategoryModel], productPromo: [ProductPromoModel])> {
+        return productApi.getProductList().map { [weak self] productListModel in
+            guard let weakSelf = self, let data = productListModel.data else { return ([CategoryModel](),[ProductPromoModel]()) }
+            weakSelf.categoryStorage.clear()
+            weakSelf.categoryStorage.save(categories: CategoryEntities.toList(categoryModels: data.category))
+            weakSelf.productStorage.clear()
+            weakSelf.productStorage.save(productPromos: ProductPromoEntities.toList(productPromoModels: data.productPromo))
+            return (data.category, data.productPromo)
+        }
     }
     
 }

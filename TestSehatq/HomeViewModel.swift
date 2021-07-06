@@ -28,11 +28,15 @@ class HomeViewModel {
     }
     
     func viewDidLoad() {
-        displayProduct.getProductList()
-            .subscribe(onSuccess: { [weak self] productModel in
+        getData()
+    }
+    
+    private func getData() {
+        displayProduct.getAllData()
+            .subscribe(onSuccess: { [weak self] categoryList, productPromoList in
                 guard let weakSelf = self else { return }
-                weakSelf.productList = productModel.productPromo
-                weakSelf.categoryList = productModel.category
+                weakSelf.categoryList = categoryList
+                weakSelf.productList = productPromoList
                 weakSelf.eventLoadData.onNext(())
         }).disposed(by: disposeBag)
     }
