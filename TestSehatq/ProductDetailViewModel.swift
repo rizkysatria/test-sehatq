@@ -14,10 +14,16 @@ class ProductDetailViewModel {
         return eventLoadData
     }
     
+    var rxEventSuccessAddToCart: PublishSubject<Void> {
+        return eventSuccessAddToCart
+    }
+    
     private (set) var productPromo = ProductPromoModel()
     private var productId: String?
     
     private let eventLoadData = PublishSubject<Void>()
+    private let eventSuccessAddToCart = PublishSubject<Void>()
+    
     private let displayProduct: DisplayProductProtocol!
     private let manageCart: ManageCartProtocol!
     private let disposeBag = DisposeBag()
@@ -37,6 +43,7 @@ class ProductDetailViewModel {
     
     func onTapBuyButton() {
         manageCart.saveProduct(id: productPromo.id)
+        eventSuccessAddToCart.onNext(())
     }
     
     private func getProductDetail() {

@@ -25,9 +25,9 @@ class ProductLisTableViewCell: UITableViewCell {
     }
     
     func setupUI(productPromoModel: ProductPromoModel) {
-        productImage.loadUrl(productPromoModel.imageUrl ?? "")
-        productNameLabel.text = productPromoModel.title ?? ""
-        updateLikeIcon(likeCount: productPromoModel.loved ?? 0)
+        productImage.loadUrl(productPromoModel.imageUrl)
+        productNameLabel.text = productPromoModel.title
+        updateLikeIcon(likeCount: productPromoModel.loved)
     }
     
     private func setupBorder() {

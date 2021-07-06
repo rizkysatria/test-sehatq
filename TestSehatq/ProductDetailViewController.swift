@@ -46,6 +46,11 @@ class ProductDetailViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 self?.updateUI()
         }).disposed(by: disposeBag)
+        
+        productDetailViewModel.rxEventSuccessAddToCart
+            .subscribe(onNext: { _ in
+                Utility.showAlertCart()
+        }).disposed(by: disposeBag)
     }
     
     private func updateUI() {
