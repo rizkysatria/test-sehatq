@@ -12,11 +12,15 @@ import GoogleSignIn
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var loginWithFBButton: FBLoginButton!
+    @IBOutlet weak var loginWithFBButton: UIButton!
     @IBOutlet weak var loginWithGoogleButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginContainerView: UIView!
+    @IBOutlet weak var rememberMeButton: UIButton!
     
     var loginViewModel: LoginViewModel!
     
+    private var isRememberMeActive: Bool = false
     private let loginManager = LoginManager()
     private let disposeBag = DisposeBag()
     
@@ -29,6 +33,8 @@ class LoginViewController: UIViewController {
         setupViewModel()
         setupButtons()
         setupGoogleSignIn()
+        setupLayerComponent()
+        updateUIRememberMeButton()
     }
     
     private func setupButtons() {
@@ -41,6 +47,14 @@ class LoginViewController: UIViewController {
         loginWithGoogleButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.connectToGoogle()
+        }).disposed(by: disposeBag)
+        
+        rememberMeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let weakSelf = self else { return }
+                weakSelf.isRememberMeActive = !weakSelf.isRememberMeActive
+                weakSelf.updateUIRememberMeButton()
+            
         }).disposed(by: disposeBag)
         
     }
@@ -72,6 +86,20 @@ class LoginViewController: UIViewController {
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
+    private func setupLayerComponent() {
+        loginContainerView.layer.borderWidth = 1
+        loginContainerView.layer.borderColor = UIColor.lightGray.cgColor
+        loginContainerView.layer.cornerRadius = 8
+        
+        loginWithFBButton.layer.cornerRadius = 8
+        loginWithGoogleButton.layer.cornerRadius = 8
+        loginButton.layer.cornerRadius = 8
+    }
+    
+    
+    private func updateUIRememberMeButton() {
+        rememberMeButton.setBackgroundImage(UIImage(systemName: isRememberMeActive ? "checkmark.square" : "square"), for: .normal)
+    }
 }
 
 extension LoginViewController: GIDSignInDelegate {

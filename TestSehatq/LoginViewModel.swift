@@ -36,7 +36,7 @@ class LoginViewModel {
     func facebookSignIn(delegate: UIViewController) {
         let loginManager = LoginManager()
         loginManager.logOut()
-        loginManager.logIn(permissions: [ .email ], viewController: delegate) { [weak self] loginResult in
+        loginManager.logIn(permissions: [.email], viewController: delegate) { [weak self] loginResult in
                 switch loginResult {
                 case .failed(let error):
                     print(error)
