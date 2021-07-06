@@ -158,6 +158,8 @@
                     </view>
                     <connections>
                         <outlet property="buyButton" destination="Jh1-Xx-Wum" id="1LX-Sh-W5F"/>
+                        <outlet property="likeButton" destination="sOa-4a-phk" id="pum-lc-Hn8"/>
+                        <outlet property="likeImage" destination="V5S-Xa-U66" id="U8x-Vk-zzq"/>
                         <outlet property="productDescriptionLabel" destination="zvS-ac-cr2" id="4tb-AI-r3c"/>
                         <outlet property="productImage" destination="hhi-84-olA" id="fSa-uy-cKo"/>
                         <outlet property="productNameLabel" destination="kQg-Xc-WuY" id="Jn8-vu-Hxv"/>

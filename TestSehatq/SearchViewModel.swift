@@ -51,6 +51,8 @@ class SearchViewModel {
                         $0.title.lowercased().contains(weakSelf.searchQuery.value.lowercased())
                     }
                     weakSelf.resultProductPromoList = result
+                } else {
+                    weakSelf.resultProductPromoList.removeAll()
                 }
                 weakSelf.eventRefreshData.onNext(())
             }).disposed(by: disposeBag)

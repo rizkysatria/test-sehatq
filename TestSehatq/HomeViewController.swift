@@ -30,8 +30,12 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        setupNavigationBar()
         super.viewWillAppear(animated)
-        navigationController?.makeNavigationBarTransparent()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
     }
     
     private func setupViewModel() {
@@ -62,6 +66,11 @@ class HomeViewController: UIViewController {
         let productDetailsVC = ProductDetailViewController.create()
         productDetailsVC.setProductId(productId: productId)
         navigationController?.pushViewController(productDetailsVC, animated: true)
+    }
+    
+    private func setupNavigationBar() {
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.removeTitleBackButton()
     }
     
 }

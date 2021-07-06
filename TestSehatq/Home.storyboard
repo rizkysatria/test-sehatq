@@ -11,13 +11,13 @@
         <!--Home View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="TestSehatq" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="TestSehatq" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVl-39-ciE">
-                                <rect key="frame" x="0.0" y="88" width="414" height="55"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="55"/>
                                 <subviews>
                                     <searchBar clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Xbf-oM-Th2">
                                         <rect key="frame" x="55" y="0.0" width="359" height="55"/>
@@ -71,7 +71,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QH-r9-WD0">
-                                <rect key="frame" x="0.0" y="141" width="414" height="755"/>
+                                <rect key="frame" x="0.0" y="97" width="414" height="799"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="pzp-GN-78f"/>
@@ -91,7 +91,6 @@
                             <constraint firstItem="iVl-39-ciE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="x0B-gx-FPQ"/>
                         </constraints>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="searchBarButton" destination="M0p-3w-kEg" id="JfO-ny-Q1x"/>
                         <outlet property="tableView" destination="3QH-r9-WD0" id="Nmt-0M-eur"/>

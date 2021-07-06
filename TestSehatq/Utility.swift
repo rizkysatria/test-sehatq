@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KRProgressHUD
 
 class Utility {
     
@@ -26,6 +27,17 @@ class Utility {
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         if let viewController = UIApplication.shared.windows.first?.rootViewController {
             viewController.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    class func showLoadingIndicator(isShow: Bool) {
+        KRProgressHUD.set(style: .black)
+        if isShow {
+            KRProgressHUD.show()
+        } else {
+            DispatchQueue.main.async {
+                KRProgressHUD.dismiss()
+            }
         }
     }
     

@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+class UserModel {
+    var userName: String = "admin"
+    var password: String = "admin"
+    
+    init() {}
+}

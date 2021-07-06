@@ -19,22 +19,26 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var productDescriptionLabel: UILabel!
     @IBOutlet weak var productPriceLabel: UILabel!
     @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeImage: UIImageView!
     
     var productDetailViewModel: ProductDetailViewModel!
     
+    private var shareButton: UIButton?
+    private var shareBarButtonItem = UIBarButtonItem()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setSearchBarItem()
         setupViewModel()
         productDetailViewModel.viewDidLoad()
         setupButton()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         setupNavigationBar()
+        super.viewWillAppear(animated)
     }
     
     func setProductId(productId: String) {
@@ -59,6 +63,7 @@ class ProductDetailViewController: UIViewController {
         productNameLabel.text = data.title
         productDescriptionLabel.text = data.description
         productPriceLabel.text = data.price
+        updateLikeImage()
     }
     
     private func setupButton() {
@@ -66,13 +71,57 @@ class ProductDetailViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 self?.productDetailViewModel.onTapBuyButton()
         }).disposed(by: disposeBag)
+        
+        shareButton?.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let weakSelf = self else { return }
+                weakSelf.present(weakSelf.getShareUIActivityVC(), animated: true)
+        }).disposed(by: disposeBag)
+        
+        likeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let weakSelf = self else { return }
+                weakSelf.productDetailViewModel.onTapLikeButton()
+                weakSelf.updateLikeImage()
+        }).disposed(by: disposeBag)
     }
     
     private func setupNavigationBar() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.makeNavigationBarTransparent()
+        navigationController?.removeTitleBackButton()
+    }
+    
+    private func setSearchBarItem() {
+        let shareImage: UIImage = UIImage(named:"ico_share")!
+        shareButton = UIButton(type: .custom)
+        shareButton!.frame = CGRect(x: 0, y: 0, width: 35, height: 48)
+        shareButton!.setImage(shareImage, for: .normal)
+        shareBarButtonItem = UIBarButtonItem(customView: shareButton!)
+        navigationItem.rightBarButtonItem = shareBarButtonItem
+    }
+    
+    private func getShareUIActivityVC() -> UIActivityViewController {
+        var sharingItems = [AnyObject]()
+        
+        if let sharingURL = NSURL(string: "https://www.google.com/") {
+            sharingItems.append(sharingURL)
+        }
+        
+        let uiActivityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
+        uiActivityViewController.excludedActivityTypes = [UIActivity.ActivityType.openInIBooks, UIActivity.ActivityType.assignToContact]
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            uiActivityViewController.modalPresentationStyle = .popover
+            let popover = uiActivityViewController.popoverPresentationController
+            popover?.barButtonItem = shareBarButtonItem
+        }
+        
+        return uiActivityViewController
+    }
+    
+    private func updateLikeImage() {
+        likeImage.image = UIImage(named: productDetailViewModel.isLike ? "btnLikeOn" : "btnLikeOff")
     }
     
 }

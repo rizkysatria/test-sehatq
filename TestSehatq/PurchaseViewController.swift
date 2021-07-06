@@ -25,6 +25,14 @@ class PurchaseViewController: UIViewController {
         setupViewModel()
         purchaseViewModel.viewDidLoad()
         registerCell()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigationBar()
+    }
+    
+    private func setupNavigationBar() {
         title = "Purchase History"
         navigationController?.makeNavigationBarSolid()
     }
@@ -42,6 +50,12 @@ class PurchaseViewController: UIViewController {
         tableview.register(ListTableViewCell.nib(), forCellReuseIdentifier: ListTableViewCell.cellReuseIdentifier())
     }
     
+    private func showProductDetails(id: String) {
+        let productDetailVC = ProductDetailViewController.create()
+        productDetailVC.setProductId(productId: id)
+        navigationController?.pushViewController(productDetailVC, animated: true)
+    }
+    
 }
 
 extension PurchaseViewController: UITableViewDelegate, UITableViewDataSource {
@@ -55,6 +69,10 @@ extension PurchaseViewController: UITableViewDelegate, UITableViewDataSource {
         let data = purchaseViewModel.purchaseList[indexPath.row]
         cell.setupUI(imgUrl: data.imageUrl, name: data.title, price: data.price)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showProductDetails(id: purchaseViewModel.purchaseList[indexPath.row].id)
     }
     
     

@@ -41,6 +41,7 @@ class SearchViewController: UIViewController {
     }
     
     private func setupSearchBar() {
+        searchBar.becomeFirstResponder()
         let bindToUIDisposable = searchViewModel.searchQuery.asObservable()
             .bind(to: searchBar.rx.text)
         let _ = searchBar.rx.text
@@ -56,8 +57,20 @@ class SearchViewController: UIViewController {
     private func setupViewModel() {
         searchViewModel.rxEventRefreshData
             .subscribe(onNext: { [weak self] in
-                self?.tableView.reloadData()
+                guard let weakSelf = self else { return }
+                weakSelf.updateTableView()
         }).disposed(by: disposeBag)
+    }
+    
+    private func showProductDetails(productId: String) {
+        let productDetailsVC = ProductDetailViewController.create()
+        productDetailsVC.setProductId(productId: productId)
+        navigationController?.pushViewController(productDetailsVC, animated: true)
+    }
+    
+    private func updateTableView() {
+        tableView.isHidden = searchViewModel.resultProductPromoList.isEmpty
+        tableView.reloadData()
     }
     
 }
@@ -73,6 +86,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let data = searchViewModel.resultProductPromoList[indexPath.row]
         cell.setupUI(imgUrl: data.imageUrl, name: data.title, price: data.price)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showProductDetails(productId: searchViewModel.resultProductPromoList[indexPath.row].id)
     }
     
 }

@@ -18,6 +18,7 @@ class ProductDetailViewModel {
         return eventSuccessAddToCart
     }
     
+    private (set) var isLike: Bool = false
     private (set) var productPromo = ProductPromoModel()
     private var productId: String?
     
@@ -46,12 +47,17 @@ class ProductDetailViewModel {
         eventSuccessAddToCart.onNext(())
     }
     
+    func onTapLikeButton() {
+        isLike = !isLike
+    }
+    
     private func getProductDetail() {
         guard let productId = productId else { return }
         displayProduct.getProductPromo(id: productId)
             .subscribe(onSuccess: { [weak self] productPromo in
                 guard let weakSelf = self else { return }
                 weakSelf.productPromo = productPromo
+                weakSelf.isLike = productPromo.loved > 0
                 weakSelf.eventLoadData.onNext(())
         }).disposed(by: disposeBag)
     }

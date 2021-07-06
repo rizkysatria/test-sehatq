@@ -32,12 +32,14 @@ class HomeViewModel {
     }
     
     private func getData() {
+        Utility.showLoadingIndicator(isShow: true)
         displayProduct.getAllData()
             .subscribe(onSuccess: { [weak self] categoryList, productPromoList in
                 guard let weakSelf = self else { return }
                 weakSelf.categoryList = categoryList
                 weakSelf.productList = productPromoList
                 weakSelf.eventLoadData.onNext(())
+                Utility.showLoadingIndicator(isShow: false)
         }).disposed(by: disposeBag)
     }
     

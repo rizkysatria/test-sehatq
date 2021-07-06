@@ -20,11 +20,12 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y5j-G5-Lu3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-867" y="-624"/>
+            <point key="canvasLocation" x="-810" y="-933"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="p24-zK-dxw">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qn0-PZ-Hza" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="MainNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UVn-6d-5hd" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="I1a-sG-4eo">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -34,7 +35,6 @@
                         <segue destination="x7V-wJ-Rc8" kind="relationship" relationship="rootViewController" id="1K0-eP-z1y"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qn0-PZ-Hza" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1584" y="-933"/>
         </scene>
