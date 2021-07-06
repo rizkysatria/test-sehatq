@@ -66,6 +66,8 @@
 		5CF6E9482694479D00994C1D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E9472694479D00994C1D /* LoginViewController.swift */; };
 		5CF6E94A2694480000994C1D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CF6E9492694480000994C1D /* Login.storyboard */; };
 		5CF6E94C2694690400994C1D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E94B2694690300994C1D /* LoginViewModel.swift */; };
+		5CF6E94E269477FF00994C1D /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E94D269477FF00994C1D /* UserDefaultStorage.swift */; };
+		5CF6E95026947C4E00994C1D /* UserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E94F26947C4E00994C1D /* UserAuthentication.swift */; };
 		7AC77CB1128796948FF68446 /* Pods_TestSehatqTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F6B1EE1ACA662A1B778FB1 /* Pods_TestSehatqTests.framework */; };
 		A9548011EB6E9F55A8C92C01 /* Pods_TestSehatq_TestSehatqUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335F2C8F7A91851B65946506 /* Pods_TestSehatq_TestSehatqUITests.framework */; };
 		C37AC31D7D85C13CF8EF9C45 /* Pods_TestSehatq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F45DD635046D6F4ACC95E6D /* Pods_TestSehatq.framework */; };
@@ -157,6 +159,8 @@
 		5CF6E9472694479D00994C1D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5CF6E9492694480000994C1D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5CF6E94B2694690300994C1D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		5CF6E94D269477FF00994C1D /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
+		5CF6E94F26947C4E00994C1D /* UserAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentication.swift; sourceTree = "<group>"; };
 		90F6B1EE1ACA662A1B778FB1 /* Pods_TestSehatqTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestSehatqTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		938FB97D79516E4B361B3C41 /* Pods-TestSehatq.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSehatq.release.xcconfig"; path = "Target Support Files/Pods-TestSehatq/Pods-TestSehatq.release.xcconfig"; sourceTree = "<group>"; };
 		9B6199DE97F4E51748A82BBA /* Pods-TestSehatq-TestSehatqUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSehatq-TestSehatqUITests.release.xcconfig"; path = "Target Support Files/Pods-TestSehatq-TestSehatqUITests/Pods-TestSehatq-TestSehatqUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -399,6 +403,7 @@
 			children = (
 				5CF6E906269328F300994C1D /* DisplayProduct.swift */,
 				5CF6E9392694096200994C1D /* ManageCart.swift */,
+				5CF6E94F26947C4E00994C1D /* UserAuthentication.swift */,
 			);
 			name = Usecase;
 			sourceTree = "<group>";
@@ -439,6 +444,7 @@
 				5CF6E918269351F600994C1D /* CategoryStorage.swift */,
 				5CF6E91A269352CA00994C1D /* ProductPromoStorage.swift */,
 				5CF6E91E2693540F00994C1D /* PurchaseProductStorage.swift */,
+				5CF6E94D269477FF00994C1D /* UserDefaultStorage.swift */,
 			);
 			name = Storage;
 			sourceTree = "<group>";
@@ -759,11 +765,13 @@
 				5CF6E8DC2692F84400994C1D /* ViewModelAssembly.swift in Sources */,
 				5CF6E92D2693E29900994C1D /* SearchViewModel.swift in Sources */,
 				5CF6E9382693FD2100994C1D /* ProductDetailViewModel.swift in Sources */,
+				5CF6E94E269477FF00994C1D /* UserDefaultStorage.swift in Sources */,
 				5CF6E8CE2692F10300994C1D /* ProductListModel.swift in Sources */,
 				5CF6E91F2693540F00994C1D /* PurchaseProductStorage.swift in Sources */,
 				5CF6E8CC2692F0BC00994C1D /* CategoryModel.swift in Sources */,
 				5CF6E914269350D000994C1D /* ProductPromoEntities.swift in Sources */,
 				5CF6E9172693518500994C1D /* RealmConfig.swift in Sources */,
+				5CF6E95026947C4E00994C1D /* UserAuthentication.swift in Sources */,
 				5CF6E8D02692F18F00994C1D /* ApiClientService.swift in Sources */,
 				5CF6E8ED2693155200994C1D /* Utility.swift in Sources */,
 				5CF6E8CA2692F08200994C1D /* ProductPromoModel.swift in Sources */,

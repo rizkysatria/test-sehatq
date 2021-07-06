@@ -10,8 +10,8 @@ import RxSwift
 
 class MainViewController: UITabBarController, UITabBarControllerDelegate {
     
-    class func create() -> MainViewController {
-        return Utility.getViewControllerFromStoryboard("MainViewController", storyboardName: "Main") as! MainViewController
+    class func create() -> UIViewController? {
+        return Utility.getViewControllerFromStoryboard("MainNavigationController", storyboardName: "Main")
     }
     
     private let disposeBag: DisposeBag = DisposeBag()

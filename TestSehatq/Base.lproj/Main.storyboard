@@ -25,7 +25,7 @@
         <!--Navigation Controller-->
         <scene sceneID="p24-zK-dxw">
             <objects>
-                <navigationController id="UVn-6d-5hd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UVn-6d-5hd" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="I1a-sG-4eo">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

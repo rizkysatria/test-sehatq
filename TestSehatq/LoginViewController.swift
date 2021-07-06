@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViewModel()
         setupButtons()
         setupGoogleSignIn()
     }
@@ -34,7 +35,7 @@ class LoginViewController: UIViewController {
         
         loginWithFBButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.onTapLoginButton()
+                self?.connectToFacebook()
         }).disposed(by: disposeBag)
         
         loginWithGoogleButton.rx.tap
@@ -44,20 +45,15 @@ class LoginViewController: UIViewController {
         
     }
     
-    private func onTapLoginButton() {
-        let loginManager = LoginManager()
-        loginManager.logOut()
-        loginManager.logIn(permissions: [ .email ], viewController: self) { loginResult in
-                switch loginResult {
-                case .failed(let error):
-                    print(error)
-                case .cancelled:
-                    print("User cancelled login.")
-                case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                    print("Logged in!")
-                    //Do further code...
-                }
-            }
+    private func setupViewModel() {
+        loginViewModel.rxEventSuccessLogin
+            .subscribe(onNext: { [weak self] in
+                self?.showMainScreen()
+        }).disposed(by: disposeBag)
+    }
+    
+    private func connectToFacebook() {
+        loginViewModel.facebookSignIn(delegate: self)
     }
     
     private func setupGoogleSignIn() {
@@ -68,6 +64,12 @@ class LoginViewController: UIViewController {
     private func connectToGoogle() {
         GIDSignIn.sharedInstance().signOut()
         GIDSignIn.sharedInstance().signIn()
+    }
+    
+    private func showMainScreen() {
+        let mainVC = MainViewController.create()
+        UIApplication.shared.windows.first?.rootViewController = mainVC
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
 }

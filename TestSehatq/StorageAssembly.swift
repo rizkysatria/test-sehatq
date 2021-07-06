@@ -24,5 +24,9 @@ class StorageAssembly: Assembly {
             PurchaseProductStorage()
         }
         
+        container.register(UserDefaultStorageProtocol.self) { r in
+            UserDefaultStorage()
+        }
+        
     }
 }

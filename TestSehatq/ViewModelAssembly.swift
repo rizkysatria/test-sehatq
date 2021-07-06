@@ -30,7 +30,7 @@ class ViewModelAssembly: Assembly {
         }
         
         container.register(LoginViewModel.self) { r in
-            LoginViewModel()
+            LoginViewModel(userDefaultStorage: r.resolve(UserDefaultStorageProtocol.self)!)
         }
         
     }
