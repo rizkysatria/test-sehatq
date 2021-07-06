@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBarButton: UIButton!
     
     var homeViewModel: HomeViewModel!
     
@@ -25,6 +26,7 @@ class HomeViewController: UIViewController {
         setupViewModel()
         homeViewModel.viewDidLoad()
         registerCell()
+        setupButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +44,18 @@ class HomeViewController: UIViewController {
     private func registerCell() {
         tableView.register(UINib(nibName: "CategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CategoryTableViewCell")
         tableView.register(UINib(nibName: "ProductLisTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductLisTableViewCell")
+    }
+    
+    private func setupButton() {
+        searchBarButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.showSearchPage()
+        }).disposed(by: disposeBag)
+    }
+    
+    private func showSearchPage() {
+        let searchVC = SearchViewController.create()
+        navigationController?.pushViewController(searchVC, animated: true)
     }
     
 }
