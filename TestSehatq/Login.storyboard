@@ -115,6 +115,7 @@
                     </view>
                     <connections>
                         <outlet property="loginWithFBButton" destination="701-4F-NfB" id="vsY-gc-JiN"/>
+                        <outlet property="loginWithGoogleButton" destination="eZM-5B-HOO" id="1su-4V-hxv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

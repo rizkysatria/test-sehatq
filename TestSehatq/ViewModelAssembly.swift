@@ -29,5 +29,9 @@ class ViewModelAssembly: Assembly {
             PurchaseViewModel(manageCart: r.resolve(ManageCartProtocol.self)!)
         }
         
+        container.register(LoginViewModel.self) { r in
+            LoginViewModel()
+        }
+        
     }
 }

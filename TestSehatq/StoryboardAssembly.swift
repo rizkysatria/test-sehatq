@@ -29,6 +29,10 @@ class StoryboardAssembly: Assembly {
             c.purchaseViewModel = r.resolve(PurchaseViewModel.self)!
         }
         
+        container.storyboardInitCompleted(LoginViewController.self) { r, c in
+            c.loginViewModel = r.resolve(LoginViewModel.self)!
+        }
+        
     }
     
 }

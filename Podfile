@@ -17,6 +17,7 @@ target 'TestSehatq' do
   pod 'RealmSwift'
   pod 'FBSDKCoreKit', '8.0.0'
   pod 'FBSDKLoginKit', '8.0.0'
+  pod 'GoogleSignIn'
 
   target 'TestSehatqTests' do
     inherit! :search_paths
