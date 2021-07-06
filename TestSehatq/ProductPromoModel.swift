@@ -9,12 +9,12 @@ import Foundation
 import ObjectMapper
 
 class ProductPromoModel : Mappable {
-    var id : String?
-    var imageUrl : String?
-    var title : String?
-    var description : String?
-    var price : String?
-    var loved : Int?
+    var id : String = ""
+    var imageUrl : String = ""
+    var title : String = ""
+    var description : String = ""
+    var price : String = ""
+    var loved : Int = 0
     
     init() {}
 

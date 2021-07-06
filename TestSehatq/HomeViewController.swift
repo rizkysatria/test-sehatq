@@ -27,6 +27,11 @@ class HomeViewController: UIViewController {
         registerCell()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     private func setupViewModel() {
         homeViewModel.rxEventLoadData
             .subscribe(onNext: { [weak self] in
@@ -79,6 +84,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return Utility.getScreenWidth()
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
     
 }

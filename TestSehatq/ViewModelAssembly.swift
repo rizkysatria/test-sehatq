@@ -16,5 +16,9 @@ class ViewModelAssembly: Assembly {
             HomeViewModel(displayProduct: r.resolve(DisplayProductProtocol.self)!)
         }
         
+        container.register(SearchViewModel.self) { r in
+            SearchViewModel(displayProduct: r.resolve(DisplayProductProtocol.self)!)
+        }
+        
     }
 }

@@ -17,6 +17,10 @@ class StoryboardAssembly: Assembly {
             c.homeViewModel = r.resolve(HomeViewModel.self)!
         }
         
+        container.storyboardInitCompleted(SearchViewController.self) { r, c in
+            c.searchViewModel = r.resolve(SearchViewModel.self)!
+        }
+        
     }
     
 }
