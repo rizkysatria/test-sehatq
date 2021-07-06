@@ -15,6 +15,8 @@ target 'TestSehatq' do
   pod 'SDWebImage', '5.11.1'
   pod 'KRProgressHUD', '3.4.7'
   pod 'RealmSwift'
+  pod 'FBSDKCoreKit', '8.0.0'
+  pod 'FBSDKLoginKit', '8.0.0'
 
   target 'TestSehatqTests' do
     inherit! :search_paths

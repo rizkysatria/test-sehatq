@@ -10,6 +10,10 @@ import RxSwift
 
 class MainViewController: UITabBarController, UITabBarControllerDelegate {
     
+    class func create() -> MainViewController {
+        return Utility.getViewControllerFromStoryboard("MainViewController", storyboardName: "Main") as! MainViewController
+    }
+    
     private let disposeBag: DisposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -24,11 +28,11 @@ class MainViewController: UITabBarController, UITabBarControllerDelegate {
         let homeTabbarItem = UITabBarItem(title: "Home", image: nil, tag: 0)
         homeTabbarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -16)
         
-        let feedVC = FeedViewController.create()
+        let feedVC = UINavigationController()
         let feedTabbarItem = UITabBarItem(title: "Feed", image: nil, tag: 0)
         feedTabbarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -16)
         
-        let cartVC = CartViewController.create()
+        let cartVC = UINavigationController()
         let cartTabbarItem = UITabBarItem(title: "Cart", image: nil, tag: 0)
         cartTabbarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -16)
         
