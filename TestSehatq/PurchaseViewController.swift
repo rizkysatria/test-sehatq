@@ -11,7 +11,7 @@ import RxSwift
 class PurchaseViewController: UIViewController {
     
     class func create() -> UIViewController {
-        return Utility.getViewControllerFromStoryboard("PurchaseViewController", storyboardName: "Purchase")
+        return Utility.getViewControllerFromStoryboard(Constant.PURCHASE_VIEW_CONTROLLER_IDENTIFIER, storyboardName: Constant.PURCHASE_STORYBOARD_NAME)
     }
     
     @IBOutlet weak var tableview: UITableView!

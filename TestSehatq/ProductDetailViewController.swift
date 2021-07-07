@@ -11,7 +11,7 @@ import RxSwift
 class ProductDetailViewController: UIViewController {
     
     class func create() -> ProductDetailViewController {
-        return Utility.getViewControllerFromStoryboard("ProductDetailViewController", storyboardName: "ProductDetails") as! ProductDetailViewController
+        return Utility.getViewControllerFromStoryboard(Constant.PRODUCT_DETAILS_VIEW_CONTROLLER_IDENTIFIER, storyboardName: Constant.PRODUCT_DETAILS_STORYBOARD_NAME) as! ProductDetailViewController
     }
     
     @IBOutlet weak var productImage: UIImageView!

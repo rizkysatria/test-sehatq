@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var rememberMeButton: UIButton!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var userNameErrorLabel: UILabel!
+    @IBOutlet weak var passwordErrorLabel: UILabel!
     
     var loginViewModel: LoginViewModel!
     
@@ -26,7 +28,7 @@ class LoginViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
     class func create() -> LoginViewController {
-        return Utility.getViewControllerFromStoryboard("LoginViewController", storyboardName: "Login") as! LoginViewController
+        return Utility.getViewControllerFromStoryboard(Constant.LOGIN_VIEW_CONTROLLER_IDENTIFIER, storyboardName: Constant.LOGIN_STORYBOARD_NAME) as! LoginViewController
     }
     
     override func viewDidLoad() {
@@ -60,7 +62,7 @@ class LoginViewController: UIViewController {
         
         loginButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.loginViewModel.onTapLoginButton()
+                self?.validateField()
         }).disposed(by: disposeBag)
         
     }
@@ -69,6 +71,12 @@ class LoginViewController: UIViewController {
         loginViewModel.rxEventSuccessLogin
             .subscribe(onNext: { [weak self] in
                 self?.showMainScreen()
+        }).disposed(by: disposeBag)
+        
+        loginViewModel.rxEventInvalidLogin
+            .subscribe(onNext: { [weak self] in
+                guard let weakSelf = self else { return }
+                weakSelf.showInvalidInlineError(isInvalidError: true)
         }).disposed(by: disposeBag)
     }
     
@@ -112,7 +120,9 @@ class LoginViewController: UIViewController {
         let _ = userNameTextField.rx.text
             .subscribe(onNext: { [weak self] value in
                 if let value = value {
-                    self?.loginViewModel.userName.accept(value)
+                    guard let weakSelf = self else { return }
+                    weakSelf.userNameErrorLabel.isHidden = true
+                    weakSelf.loginViewModel.userName.accept(value)
                 }
             }, onCompleted:  {
                 userNameBindToUI.dispose()
@@ -122,13 +132,36 @@ class LoginViewController: UIViewController {
             .bind(to: passwordTextField.rx.text)
         let _ = passwordTextField.rx.text
             .subscribe(onNext: { [weak self] value in
+                guard let weakSelf = self else { return }
+                weakSelf.passwordErrorLabel.isHidden = true
                 if let value = value {
-                    self?.loginViewModel.password.accept(value)
+                    weakSelf.loginViewModel.password.accept(value)
                 }
             }, onCompleted:  {
                 passwordBindToUI.dispose()
             })
     }
+    
+    private func validateField() {
+        if loginViewModel.userName.value.isEmpty && loginViewModel.password.value.isEmpty {
+            showInvalidInlineError(isInvalidError: false)
+        } else {
+            loginViewModel.onTapLoginButton()
+        }
+    }
+    
+    private func showInvalidInlineError(isInvalidError: Bool) {
+        userNameErrorLabel.isHidden = false
+        passwordErrorLabel.isHidden = false
+        if isInvalidError {
+            passwordErrorLabel.text = Constant.ERROR_INVALID_PASSWORD
+            userNameErrorLabel.text = Constant.ERROR_INVALID_USERNAME
+        } else {
+            passwordErrorLabel.text = Constant.ERROR_EMPTY_PASSWORD
+            userNameErrorLabel.text = Constant.ERROR_EMPTY_USERNAME
+        }
+    }
+    
 }
 
 extension LoginViewController: GIDSignInDelegate {
@@ -138,11 +171,9 @@ extension LoginViewController: GIDSignInDelegate {
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-//        loginMenuViewModel.googleAuthenticationComponentViewModel.sign(signIn, didDisconnectWith: user, withError: error)
     }
     
     func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
-        //Nothing to do!?
     }
     
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {

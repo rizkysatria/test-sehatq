@@ -10,7 +10,7 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     class func create() -> ProfileViewController {
-        return Utility.getViewControllerFromStoryboard("ProfileViewController", storyboardName: "Profile") as! ProfileViewController
+        return Utility.getViewControllerFromStoryboard(Constant.PROFILE_CONTROLLER_IDENTIFIER, storyboardName: Constant.PROFILE_STORYBOARD_NAME) as! ProfileViewController
     }
     
     override func viewDidLoad() {

@@ -11,7 +11,7 @@ import RxSwift
 class SearchViewController: UIViewController {
     
     class func create() -> SearchViewController {
-        return Utility.getViewControllerFromStoryboard("SearchViewController", storyboardName: "Search") as! SearchViewController
+        return Utility.getViewControllerFromStoryboard(Constant.SEARCH_VIEW_CONTROLLER_IDENTIFIER, storyboardName: Constant.SEARCH_STORYBOARD_NAME) as! SearchViewController
     }
     
     @IBOutlet weak var tableView: UITableView!

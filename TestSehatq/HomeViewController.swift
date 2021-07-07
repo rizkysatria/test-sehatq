@@ -11,7 +11,7 @@ import RxSwift
 class HomeViewController: UIViewController {
     
     class func create() -> HomeViewController {
-        return Utility.getViewControllerFromStoryboard("HomeViewController", storyboardName: "Home") as! HomeViewController
+        return Utility.getViewControllerFromStoryboard(Constant.HOME_CONTROLLER_IDENTIFIER, storyboardName: Constant.HOME_STORYBOARD_NAME) as! HomeViewController
     }
     
     @IBOutlet weak var tableView: UITableView!

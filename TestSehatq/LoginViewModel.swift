@@ -20,9 +20,14 @@ class LoginViewModel {
         return eventSuccessLogin
     }
     
+    var rxEventInvalidLogin: PublishSubject<Void> {
+        return eventInvalidLogin
+    }
+    
     private (set) var isRememberMeActive: Bool = false
     private let loginManager = LoginManager()
     private let eventSuccessLogin = PublishSubject<Void>()
+    private let eventInvalidLogin = PublishSubject<Void>()
     private let userDefaultStorage: UserDefaultStorageProtocol!
     
     init(userDefaultStorage: UserDefaultStorageProtocol) {
@@ -65,6 +70,8 @@ class LoginViewModel {
             userDefaultStorage.setIsLogin(isLogin: true)
             userDefaultStorage.setIsRememberMeActive(isActive: isRememberMeActive)
             eventSuccessLogin.onNext(())
+        } else {
+            eventInvalidLogin.onNext(())
         }
     }
     
