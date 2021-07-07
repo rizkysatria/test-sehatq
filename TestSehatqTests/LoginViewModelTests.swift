@@ -38,6 +38,18 @@ class LoginViewModelTests: XCTestCase {
         loginViewModel.onTapLoginButton()
     }
     
+    func testInvalidLogin() {
+        loginViewModel.userName.accept("admin123")
+        loginViewModel.password.accept("admin123")
+        
+        loginViewModel.rxEventInvalidLogin
+            .subscribe(onNext: {
+                XCTAssertTrue(true, "must be called")
+        }).disposed(by: disposeBag)
+        
+        loginViewModel.onTapLoginButton()
+    }
+    
     func testOnTapRememberMe() {
         loginViewModel.setActiveRememberMe(isActive: true)
         XCTAssertTrue(loginViewModel.isRememberMeActive == true, "tap remember me must be true")
