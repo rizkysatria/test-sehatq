@@ -16,7 +16,6 @@ class Constant {
     
     static let MAIN_VIEW_CONTROLLER_IDENTIFIER = "MainNavigationController"
     static let HOME_CONTROLLER_IDENTIFIER = "HomeViewController"
-    static let PROFILE_CONTROLLER_IDENTIFIER = "ProfileViewController"
     static let SEARCH_VIEW_CONTROLLER_IDENTIFIER = "SearchViewController"
     static let PRODUCT_DETAILS_VIEW_CONTROLLER_IDENTIFIER = "ProductDetailViewController"
     static let PURCHASE_VIEW_CONTROLLER_IDENTIFIER = "PurchaseViewController"
@@ -24,7 +23,6 @@ class Constant {
     
     static let MAIN_STORYBOARD_NAME = "Main"
     static let HOME_STORYBOARD_NAME = "Home"
-    static let PROFILE_STORYBOARD_NAME = "Profile"
     static let SEARCH_STORYBOARD_NAME = "Search"
     static let PRODUCT_DETAILS_STORYBOARD_NAME = "ProductDetails"
     static let PURCHASE_STORYBOARD_NAME = "Purchase"

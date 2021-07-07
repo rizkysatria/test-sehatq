@@ -31,10 +31,8 @@
 		5CF6E8DC2692F84400994C1D /* ViewModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E8DB2692F84400994C1D /* ViewModelAssembly.swift */; };
 		5CF6E8DE2692F86700994C1D /* StoryboardAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E8DD2692F86700994C1D /* StoryboardAssembly.swift */; };
 		5CF6E8E5269314C700994C1D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E8E4269314C700994C1D /* HomeViewController.swift */; };
-		5CF6E8EB269314F300994C1D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E8EA269314F300994C1D /* ProfileViewController.swift */; };
 		5CF6E8ED2693155200994C1D /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E8EC2693155200994C1D /* Utility.swift */; };
 		5CF6E8F02693158B00994C1D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CF6E8EF2693158B00994C1D /* Home.storyboard */; };
-		5CF6E8F6269315B800994C1D /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CF6E8F5269315B800994C1D /* Profile.storyboard */; };
 		5CF6E8FB2693266A00994C1D /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF6E8FA2693266A00994C1D /* CategoryCollectionViewCell.xib */; };
 		5CF6E8FD2693267200994C1D /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E8FC2693267200994C1D /* CategoryCollectionViewCell.swift */; };
 		5CF6E900269327CB00994C1D /* ProductLisTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF6E8FF269327CB00994C1D /* ProductLisTableViewCell.swift */; };
@@ -128,10 +126,8 @@
 		5CF6E8DB2692F84400994C1D /* ViewModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelAssembly.swift; sourceTree = "<group>"; };
 		5CF6E8DD2692F86700994C1D /* StoryboardAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardAssembly.swift; sourceTree = "<group>"; };
 		5CF6E8E4269314C700994C1D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		5CF6E8EA269314F300994C1D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		5CF6E8EC2693155200994C1D /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		5CF6E8EF2693158B00994C1D /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		5CF6E8F5269315B800994C1D /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		5CF6E8FA2693266A00994C1D /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		5CF6E8FC2693267200994C1D /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		5CF6E8FF269327CB00994C1D /* ProductLisTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductLisTableViewCell.swift; sourceTree = "<group>"; };
@@ -359,7 +355,6 @@
 			children = (
 				5CF6E8982692D63600994C1D /* MainViewController.swift */,
 				5CF6E8E4269314C700994C1D /* HomeViewController.swift */,
-				5CF6E8EA269314F300994C1D /* ProfileViewController.swift */,
 				5CF6E922269362D100994C1D /* SearchViewController.swift */,
 				5CF6E92A2693DDA500994C1D /* ProductDetailViewController.swift */,
 				5CF6E93D26941AD400994C1D /* PurchaseViewController.swift */,
@@ -373,7 +368,6 @@
 			children = (
 				5CF6E89A2692D63600994C1D /* Main.storyboard */,
 				5CF6E8EF2693158B00994C1D /* Home.storyboard */,
-				5CF6E8F5269315B800994C1D /* Profile.storyboard */,
 				5CF6E9242693633600994C1D /* Search.storyboard */,
 				5CF6E9282693DD8400994C1D /* ProductDetails.storyboard */,
 				5CF6E93B26941A9E00994C1D /* Purchase.storyboard */,
@@ -602,7 +596,6 @@
 				5CF6E8FB2693266A00994C1D /* CategoryCollectionViewCell.xib in Resources */,
 				5CF6E902269327D400994C1D /* ProductLisTableViewCell.xib in Resources */,
 				5CF6E9252693633600994C1D /* Search.storyboard in Resources */,
-				5CF6E8F6269315B800994C1D /* Profile.storyboard in Resources */,
 				5CF6E8F02693158B00994C1D /* Home.storyboard in Resources */,
 				5CF6E9292693DD8400994C1D /* ProductDetails.storyboard in Resources */,
 				5CF6E94A2694480000994C1D /* Login.storyboard in Resources */,
@@ -795,7 +788,6 @@
 				5CF6E90E2693353300994C1D /* UIImageExtension.swift in Sources */,
 				5CF6E91B269352CA00994C1D /* ProductPromoStorage.swift in Sources */,
 				5CF6E94C2694690400994C1D /* LoginViewModel.swift in Sources */,
-				5CF6E8EB269314F300994C1D /* ProfileViewController.swift in Sources */,
 				5CF6E907269328F300994C1D /* DisplayProduct.swift in Sources */,
 				5CF6E93A2694096300994C1D /* ManageCart.swift in Sources */,
 				5CF6E8DE2692F86700994C1D /* StoryboardAssembly.swift in Sources */,

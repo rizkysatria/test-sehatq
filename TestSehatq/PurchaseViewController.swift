@@ -34,7 +34,7 @@ class PurchaseViewController: UIViewController {
     
     private func setupNavigationBar() {
         title = "Purchase History"
-        navigationController?.makeNavigationBarSolid()
+//        navigationController?.makeNavigationBarSolid()
     }
     
     private func setupViewModel() {
