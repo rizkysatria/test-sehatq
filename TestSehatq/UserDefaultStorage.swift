@@ -12,6 +12,8 @@ protocol UserDefaultStorageProtocol {
     func setIsLogin(isLogin: Bool)
     func getIsRememberMeActive() -> Bool
     func setIsRememberMeActive(isActive: Bool)
+    func saveProductId(productId: String)
+    func getListProductId() -> [String]
 }
 
 class UserDefaultStorage: UserDefaultStorageProtocol {
@@ -19,6 +21,7 @@ class UserDefaultStorage: UserDefaultStorageProtocol {
     private let defaults = UserDefaults.standard
     private let isLoginKey = "isLogin"
     private let isRememberMeActive = "isRememberMeActive"
+    private let productIdListKey = "productIdListKey"
     
     func getIsLogin() -> Bool {
         return defaults.value(forKey: isLoginKey) as? Bool ?? false
@@ -34,6 +37,20 @@ class UserDefaultStorage: UserDefaultStorageProtocol {
     
     func setIsRememberMeActive(isActive: Bool) {
         defaults.setValue(isActive, forKey: isRememberMeActive)
+    }
+    
+    func saveProductId(productId: String) {
+        var list = getListProductId()
+        if !list.isEmpty {
+            list.append(productId)
+            defaults.setValue(list, forKey: productIdListKey)
+        } else {
+            defaults.setValue([productId], forKey: productIdListKey)
+        }
+    }
+    
+    func getListProductId() -> [String] {
+        return defaults.stringArray(forKey: productIdListKey) ?? [String]()
     }
     
 }

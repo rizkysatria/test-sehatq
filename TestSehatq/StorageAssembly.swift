@@ -20,10 +20,6 @@ class StorageAssembly: Assembly {
             ProductPromoStorage()
         }
         
-        container.register(PurchaseProductStorageProtocol.self) { r in
-            PurchaseProductStorage()
-        }
-        
         container.register(UserDefaultStorageProtocol.self) { r in
             UserDefaultStorage()
         }

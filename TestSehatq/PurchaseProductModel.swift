@@ -13,6 +13,14 @@ class PurchaseProductModel {
     var title : String = ""
     var price : String = ""
     
+    static func create(productPromoEntities: ProductPromoEntities) -> PurchaseProductModel {
+        let purchaseProductModel = PurchaseProductModel()
+        purchaseProductModel.id = productPromoEntities.id
+        purchaseProductModel.imageUrl = productPromoEntities.imageUrl
+        purchaseProductModel.title = productPromoEntities.title
+        purchaseProductModel.price = productPromoEntities.price
+        return purchaseProductModel
+    }
     
     static func toList(purchaseProductEntities: [PurchaseProductEntities]) -> [PurchaseProductModel] {
         var purchaseProductModels = [PurchaseProductModel]()

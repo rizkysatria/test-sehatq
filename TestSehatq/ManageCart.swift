@@ -15,22 +15,27 @@ protocol ManageCartProtocol {
 
 class ManageCart: ManageCartProtocol {
     
-    private let purchaseProduct: PurchaseProductStorageProtocol!
     private let productPromo: ProductPromoStorageProtocol!
+    private let userDefaultStorage: UserDefaultStorageProtocol!
     
-    init(purchaseProduct: PurchaseProductStorageProtocol, productPromo: ProductPromoStorageProtocol) {
-        self.purchaseProduct = purchaseProduct
+    init(productPromo: ProductPromoStorageProtocol, userDefaultStorage: UserDefaultStorageProtocol) {
         self.productPromo = productPromo
+        self.userDefaultStorage = userDefaultStorage
     }
     
     func saveProduct(id: String) {
-        if let product = productPromo.getProductPromo(id: id) {
-            let entities = PurchaseProductEntities.toEntities(productPromo: product)
-            purchaseProduct.save(purchaseProduct: entities)
-        }
+        userDefaultStorage.saveProductId(productId: id)
     }
     
     func getAllProduct() -> Single<[PurchaseProductModel]> {
-        return Single.just(PurchaseProductModel.toList(purchaseProductEntities: purchaseProduct.getPurchaseProducts()))
+        let listOfProduct = userDefaultStorage.getListProductId()
+        var purchaseProductModels = [PurchaseProductModel]()
+        listOfProduct.forEach { id in
+            if let product = productPromo.getProductPromo(id: id) {
+                purchaseProductModels.append(PurchaseProductModel.create(productPromoEntities: product))
+            }
+        }
+        
+        return Single.just(purchaseProductModels)
     }
 }
