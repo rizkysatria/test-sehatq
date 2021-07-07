@@ -37,8 +37,13 @@ class ProductDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setupNavigationBar()
         super.viewWillAppear(animated)
+        setupNavigationBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.makeNavigationBarSolid()
     }
     
     func setProductId(productId: String) {

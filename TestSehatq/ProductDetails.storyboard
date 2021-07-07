@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Wy-Gf-Nai">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQt-vD-pmr">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="214"/>
@@ -147,7 +147,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7Wy-Gf-Nai" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="2xi-Qx-cE6"/>
+                            <constraint firstItem="7Wy-Gf-Nai" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="2xi-Qx-cE6"/>
                             <constraint firstAttribute="bottom" secondItem="7Wy-Gf-Nai" secondAttribute="bottom" id="9Ww-Yi-JAT"/>
                             <constraint firstItem="vr3-5f-cmP" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Kuz-n8-lpF"/>
                             <constraint firstItem="vr3-5f-cmP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="L4M-Cs-wYh"/>
